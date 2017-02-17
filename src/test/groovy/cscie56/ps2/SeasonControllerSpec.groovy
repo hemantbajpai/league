@@ -12,7 +12,31 @@ class SeasonControllerSpec extends Specification {
 
         // TODO: Populate valid properties like...
         //params["name"] = 'someValidName'
-        assert false, "TODO: Provide a populateValidParams() implementation for this generated test suite"
+        //assert false, "TODO: Provide a populateValidParams() implementation for this generated test suite"
+        League league = new League()
+        Conference eastern = new Conference(name: "eastern", teams: [])
+        Team team1 = new Team(name:"team1", homeWins: 1, awayWins: 1, homeLosses: 1, awayLosses: 1, streakStr: 'W', streakCount: 1)
+        Team team2 = new Team(name:"team2", homeWins: 1, awayWins: 1, homeLosses: 1, awayLosses: 1, streakStr: 'W', streakCount: 1)
+        eastern.teams << team1 << team2
+        Conference western = new Conference(name: "western", teams: [])
+        Team team3 = new Team(name:"team3", homeWins: 1, awayWins: 1, homeLosses: 1, awayLosses: 1, streakStr: 'W', streakCount: 1)
+        Team team4 = new Team(name:"team4", homeWins: 1, awayWins: 1, homeLosses: 1, awayLosses: 1, streakStr: 'W', streakCount: 1)
+        western.teams << team3 << team4
+        league.conferences = [] << eastern << western
+
+        params << [name:'2017', startDate:new Date(), endDate: new Date(), league: league, games: []]
+    }
+
+    void "Test the showStandings return correct model" () {
+
+        when:"The showStandings is executed"
+            populateValidParams(params)
+            def season = new Season(params)
+            controller.showStandings(season)
+
+        then: "The model is correct"
+            model.westResults
+            model.eastResults
     }
 
     void "Test the index action returns the correct model"() {

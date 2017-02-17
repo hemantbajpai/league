@@ -11,10 +11,10 @@ class BootStrap {
     def init = { servletContext ->
         League league = new League()
 
-        Conference eastern = new Conference(teams: [])
+        Conference eastern = new Conference(teams: [], name:'eastern')
         eastern.league = league
 
-        Conference western = new Conference(teams: [])
+        Conference western = new Conference(teams: [], name:'western')
         western.league = league
 
         Team clevelandCavaliers = new Team(name: 'Cleveland Cavaliers')

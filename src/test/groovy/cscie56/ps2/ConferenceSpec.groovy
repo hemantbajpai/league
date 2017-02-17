@@ -18,11 +18,20 @@ class ConferenceSpec extends Specification {
     void "Conference should have teams greater than 1"() {
         when:
             def league = new League()
-            league.conferences = []
-            league.conferences << new Conference()
-            league.conferences << new Conference()
-            league.save(flush:true)
+            Conference eastern = new Conference( name:'eastern', teams:[])
+            eastern.league = league
+            eastern.save(flush:true)
         then:
-            league.validate()
+            !eastern.validate()
+        when:
+            eastern.teams << new Team()
+            eastern.save(flush:true)
+        then:
+            !eastern.validate()
+        when:
+            eastern.teams << new Team()
+            eastern.save(flush:true)
+        then:
+            eastern.validate()
     }
 }

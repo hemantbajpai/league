@@ -28,14 +28,14 @@ class SeasonController {
                 values.add(""+(team.homeWins+team.awayWins)+"-"+(team.awayLosses+team.homeLosses))
                 values.add(team.streakStr + team.streakCount)
 
-                if(idx == 0)
+                if(conference.name == 'eastern')
                     eastResultsMap.put(team, values)
                 else
                     westResultsMap.put(team, values)
             }
         }
 
-        //respond  model:[teams: season.league.conferences[0].teams]
+        //respond  model:[westResults:westResultsMap, eastResults: eastResultsMap]
         render view: 'showStandings', model:[ westResults:westResultsMap, eastResults: eastResultsMap]
     }
 

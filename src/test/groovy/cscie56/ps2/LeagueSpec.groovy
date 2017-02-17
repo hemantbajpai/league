@@ -19,9 +19,15 @@ class LeagueSpec extends Specification {
         when:
             def league = new League()
             league.conferences = []
-
+            league.save(flush:true)
+        then:
+            !league.validate()
+        when:
             league.conferences << new Conference()
-
+            league.save(flush:true)
+        then:
+            !league.validate()
+        when:
             league.conferences << new Conference()
             league.save(flush:true)
         then:

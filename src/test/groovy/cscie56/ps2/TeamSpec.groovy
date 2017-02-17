@@ -17,7 +17,9 @@ class TeamSpec extends Specification {
 
     void "Team name not null"() {
         when:
-            Team team = new Team(name:'name')
+            Conference conference = new Conference()
+            Team team = new Team(name:'name', homeWins: 1, awayWins: 1, homeLosses: 1, awayLosses: 1, )
+            team.conference = conference
             team.save(flush:true)
         then:
             team.validate()

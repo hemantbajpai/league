@@ -20,10 +20,64 @@
     <div class="tab-content">
 
         <div id="eastern" class="tab-pane fade">
-            <g:render template="standingsTable" model="[results:eastResults]" />
+            <table>
+                <tr>
+                    <th>#</th>
+                    <th>Team</th>
+                    <th>W</th>
+                    <th>L</th>
+                    <th>PCT</th>
+                    <th>GB</th>
+                    <th>HOME</th>
+                    <th>ROAD</th>
+                    <th>L10</th>
+                    <th>STRK</th>
+                </tr>
+                <g:each var="result" in="${eastResults}">
+                    <tr>
+                        <td>${result.value[0]}</td>
+                        <td>${result.key.name}</td>
+                        <td>${result.value[1]}</td>
+                        <td>${result.value[2]}</td>
+                        <td>${result.value[3]}</td>
+                        <td>${result.value[4]}</td>
+                        <td>${result.value[5]}</td>
+                        <td>${result.value[6]}</td>
+                        <td>${result.value[7]}</td>
+                        <td>${result.value[8]}</td>
+                    </tr>
+                </g:each>
+            </table>
         </div>
         <div id="western" class="tab-pane active">
-            <g:render template="standingsTable" model="[results:westResults]" />
+            <table>
+                <tr>
+                    <th>#</th>
+                    <th>Team</th>
+                    <th>W</th>
+                    <th>L</th>
+                    <th>PCT</th>
+                    <th>GB</th>
+                    <th>HOME</th>
+                    <th>ROAD</th>
+                    <th>L10</th>
+                    <th>STRK</th>
+                </tr>
+                <g:each var="result" in="${westResults}">
+                    <tr>
+                        <td>${result.value[0]}</td>
+                        <td>${result.key.name}</td>
+                        <td>${result.value[1]}</td>
+                        <td>${result.value[2]}</td>
+                        <td>${result.value[3]}</td>
+                        <td>${result.value[4]}</td>
+                        <td>${result.value[5]}</td>
+                        <td>${result.value[6]}</td>
+                        <td>${result.value[7]}</td>
+                        <td>${result.value[8]}</td>
+                    </tr>
+                </g:each>
+            </table>
         </div>
     </div>
 </div>
