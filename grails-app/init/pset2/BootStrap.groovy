@@ -62,9 +62,9 @@ class BootStrap {
             for(int i = 0; i < conference.teams.size(); ++i) {
                 for (int j = 0; j < conference.teams.size(); ++j) {
                     if (i == j)
-                        continue;
+                        continue
 
-                    String date = "1/"+rand.nextInt(31)+"/2017"
+                    String date = "1/"+(rand.nextInt(30)+1)+"/2017"
                     Game game = new Game(homeTeam: conference.teams[i], awayTeam: conference.teams[j], date: Date.parse("MM/dd/yyyy", date), location: conference.teams[i].name)
                     game.generateOutput()
                     game.season = season
