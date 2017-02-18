@@ -11,7 +11,10 @@ class Season {
 
     static constraints = {
         name blank:false, unique: true
-        startDate blank:false
-        endDate blank:false
+        endDate validator: {val, obj, errors ->
+            if(val < obj.startDate) {
+                errors.rejectValue('endDate', 'endDateBeforeStartDate')
+            }
+        }
     }
 }

@@ -4,67 +4,49 @@ class Game {
 
     Team homeTeam
     Team awayTeam
+    int homeTeamScore
+    int awayTeamScore
     Date date
     String location
 
     static belongsTo = [season:Season]
 
     static constraints = {
+        date validator: {val, obj, errors ->
+            if(val > obj.season.endDate ||  val < obj.season.startDate) {
+                errors.rejectValue('date', 'dateBeforeStartDateOrAfterEndDate')
+            }
+        }
     }
 
     def generateOutput() {
 
         //generating scores
         Random rand = new Random()
-        int firstScore = rand.nextInt(10)
-        int secondScore = rand.nextInt(10)
+        homeTeamScore = rand.nextInt(10)
+        awayTeamScore = rand.nextInt(10)
 
         //updating team classes variables
-        if(firstScore > secondScore) {
+        if(homeTeamScore > awayTeamScore) {
             ++homeTeam.homeWins
-            if(homeTeam.streakStr == "W")
-                ++homeTeam.streakCount
-            else
-                homeTeam.streakCount = 1
-            homeTeam.streakStr = "W"
+            homeTeam.results = "W" + homeTeam.results
+
             ++awayTeam.awayLosses
-            if(awayTeam.streakStr == "L")
-                ++awayTeam.streakCount
-            else
-                awayTeam.streakCount = 1
-            awayTeam.streakStr = "L"
+            awayTeam.results = "L" + awayTeam.results
         }
-        else if(firstScore < secondScore) {
+        else if(homeTeamScore < awayTeamScore) {
             ++homeTeam.homeLosses
-            if(homeTeam.streakStr == "L")
-                ++homeTeam.streakCount
-            else
-                homeTeam.streakCount = 1
-            homeTeam.streakStr = "L"
+            homeTeam.results = "L" + homeTeam.results
+
             ++awayTeam.awayWins
-            if(awayTeam.streakStr == "W")
-                ++awayTeam.streakCount
-            else
-                awayTeam.streakCount = 1
-            awayTeam.streakStr = "W"
+            awayTeam.results = "W" + awayTeam.results
         }
         else {
+            homeTeam.results = "T" + homeTeam.results
             ++homeTeam.ties
-            if(homeTeam.streakStr == "T")
-                ++homeTeam.streakCount
-            else
-                homeTeam.streakCount = 1
-            homeTeam.streakStr = "T"
+
+            awayTeam.results = "T" + awayTeam.results
             ++awayTeam.ties
-            if(awayTeam.streakStr == "T")
-                ++awayTeam.streakCount
-            else
-                awayTeam.streakCount = 1
-            awayTeam.streakStr = "T"
         }
-        homeTeam.scored += firstScore
-        awayTeam.scored += secondScore
-        homeTeam.allowed += secondScore
-        awayTeam.allowed += firstScore
     }
 }

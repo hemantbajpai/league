@@ -25,8 +25,8 @@ class SeasonController {
                 values.add((leadingWins-team.homeWins-team.awayWins+team.homeLosses+team.awayLosses-leadingLosses)/2)
                 values.add("$team.homeWins-$team.homeLosses")
                 values.add("$team.awayWins-$team.awayLosses")
-                values.add(""+(team.homeWins+team.awayWins)+"-"+(team.awayLosses+team.homeLosses))
-                values.add(team.streakStr + team.streakCount)
+                values.add(team.getLastTen())
+                values.add(team.getStreak())
 
                 if(conference.name == 'eastern')
                     eastResultsMap.put(team, values)

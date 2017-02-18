@@ -51,24 +51,28 @@ class BootStrap {
 
         league.conferences = [] << eastern << western
 
-        Season season = new Season(name: '2017', startDate: new Date(2017, 1, 1), endDate: new Date(2017, 2, 12))
+        Season season = new Season(name: '2017', startDate:Date.parse("MM/dd/yyyy", "1/1/2017"), endDate:Date.parse("MM/dd/yyyy", "1/31/2017"))
         season.league = league
         league.seasons = [] << season
+        season.games = []
 
-        league.conferences.each { conference ->
+        Random rand = new Random()
+
+        league.conferences.each{ conference ->
             for(int i = 0; i < conference.teams.size(); ++i) {
                 for (int j = 0; j < conference.teams.size(); ++j) {
                     if (i == j)
                         continue;
 
-                    Game game = new Game(homeTeam: conference.teams[i], awayTeam: conference.teams[j], date: new Date(), location: conference.teams[i].name)
+                    String date = "1/"+rand.nextInt(31)+"/2017"
+                    Game game = new Game(homeTeam: conference.teams[i], awayTeam: conference.teams[j], date: Date.parse("MM/dd/yyyy", date), location: conference.teams[i].name)
                     game.generateOutput()
                     game.season = season
-                    //season.games << game
-                    //game.save()
+                    season.games << game
                 }
             }
         }
+
         league.save()
     }
     def destroy = {
