@@ -18,7 +18,7 @@ class PersonSpec extends Specification {
     void "Person role should be coach or player"() {
         when:
             Team team = new Team()
-            Person person = new Person(firstName: "first", lastName: "last", role: "coach")
+            Person person = new Person(firstName: "first", lastName: "last", role: "coach", bio: "xyz", birthDate: new Date(), birthPlace: "Boston, MA", height: "6\'11\"", weight: "190", universityAttended: "Harvard")
             person.team = team
             person.save(flush:true)
         then:
@@ -38,7 +38,7 @@ class PersonSpec extends Specification {
     void "Person first name can not be blank"() {
         when:
             Team team = new Team()
-            Person person = new Person(firstName: "", lastName: "last", role: "coach")
+            Person person = new Person(firstName: "", lastName: "last", role: "coach", bio: "xyz", birthDate: new Date(), birthPlace: "Boston, MA", height: "6\'11\"", weight: "190", universityAttended: "Harvard")
             person.team = team
             person.save(flush: true)
         then:
@@ -53,7 +53,7 @@ class PersonSpec extends Specification {
     void "Person last name can not be blank"() {
         when:
             Team team = new Team()
-            Person person = new Person(firstName: "first", lastName: "", role: "coach")
+            Person person = new Person(firstName: "first", lastName: "", role: "coach", bio: "xyz", birthDate: new Date(), birthPlace: "Boston, MA", height: "6\'11\"", weight: "190", universityAttended: "Harvard")
             person.team = team
             person.save(flush: true)
         then:
@@ -67,7 +67,7 @@ class PersonSpec extends Specification {
 
     void "Person should belong to a team"() {
         when:
-            Person person = new Person(firstName: "first", lastName: "last", role: "coach")
+            Person person = new Person(firstName: "first", lastName: "last", role: "coach", bio: "xyz", birthDate: new Date(), birthPlace: "Boston, MA", height: "6\'11\"", weight: "190", universityAttended: "Harvard")
             person.save(flush: true)
         then:
             !person.validate()
