@@ -1,5 +1,11 @@
 package cscie56.ps3
 
+import cscie56.ps2.Conference
+import cscie56.ps2.Game
+import cscie56.ps2.League
+import cscie56.ps2.Person
+import cscie56.ps2.Season
+import cscie56.ps2.Team
 import grails.test.mixin.*
 import spock.lang.*
 
@@ -10,9 +16,44 @@ class GameStatsControllerSpec extends Specification {
     def populateValidParams(params) {
         assert params != null
 
-        // TODO: Populate valid properties like...
-        //params["name"] = 'someValidName'
-        assert false, "TODO: Provide a populateValidParams() implementation for this generated test suite"
+        League league = new League(conferences: [], seasons: [])
+        Conference conference = new Conference(name: "eastern", teams: [], league:league)
+
+        Team team1 = new Team(name:"team1", homeWins: 1, awayWins: 0, homeLosses: 0, awayLosses: 0, ties: 0, results: "W", players: [], conference: conference)
+        Person player = new Person(firstName: 'Anthony', lastName: 'Davis', role:'player', bio:'xyz', height: '6\'11\"', weight: 253, birthDate: Date.parse("MM-dd-yyyy", "03-11-1993"), birthPlace: 'Boston, MA', universityAttended: 'Harvard', team: team1)
+        team1.players << player
+        Team team2 = new Team(name:"team2", homeWins: 0, awayWins: 0, homeLosses: 0, awayLosses: 1, ties: 0, results: "L", conference: conference)
+        conference.teams << team1 << team2
+
+        Season season = new Season(name:'2017', startDate:Date.parse("MM/dd/yyyy", "1/1/2017"), endDate:Date.parse("MM/dd/yyyy", "1/31/2017"), league: league, games: [])
+        Game game = new Game(homeTeam: team1, awayTeam: team2, date: Date.parse("MM/dd/yyyy", "1/13/2017"), location: team1.name, season: season)
+        season.games << game
+
+        league.seasons  << season
+
+        league.conferences << conference
+
+        params << [player: player, game: game]
+
+    }
+
+    void "Test the leaderboard return correct model" () {
+
+        when:"The leaderboard is executed"
+            populateValidParams(params)
+            def gameStats = new GameStats(params)
+            gameStats.generateOutput()
+            gameStats.player.gameStats = [] << gameStats
+            gameStats.game.gameStats = [] << gameStats
+            gameStats.save(flush:true)
+            controller.leaderboard()
+
+        then: "The model is correct"
+            model.points[gameStats.player] == gameStats.points
+            model.assists[gameStats.player] == gameStats.assists
+            model.rebounds[gameStats.player] == gameStats.rebounds
+            model.steals[gameStats.player] == gameStats.steals
+            model.threePointersMade[gameStats.player] == gameStats.threePointersMade
     }
 
     void "Test the index action returns the correct model"() {

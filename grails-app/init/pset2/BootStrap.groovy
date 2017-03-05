@@ -23,7 +23,7 @@ class BootStrap {
         clevelandCavaliers.conference = eastern
         eastern.teams << clevelandCavaliers
 
-        Person anthony = new Person(firstName: 'Anthony', lastName: 'Davis', role:'player', bio:'xyz', height: '6\'11\"', weight: '253', birthDate: Date.parse("MM-dd-yyyy", "03-11-1993"), birthPlace: 'Boston, MA', universityAttended: 'Harvard')
+        Person anthony = new Person(firstName: 'Anthony', lastName: 'Davis', role:'player', bio:'Great player', height: '6\'11\"', weight: 253, birthDate: Date.parse("MM-dd-yyyy", "03-11-1993"), birthPlace: 'Boston, MA', universityAttended: 'Harvard')
         anthony.team = clevelandCavaliers
         anthony.gameStats = []
         clevelandCavaliers.players = [] << anthony
@@ -32,7 +32,7 @@ class BootStrap {
         bostonCeltics.conference = eastern
         eastern.teams << bostonCeltics
 
-        Person carmelo = new Person(firstName: 'Carmelo', lastName: 'Anthony', role:'player', bio:'xyz', height: '6\'8\"', weight: '240', birthDate: Date.parse("MM-dd-yyyy", "05-29-1984"), birthPlace: 'Boston, MA', universityAttended: 'MIT')
+        Person carmelo = new Person(firstName: 'Carmelo', lastName: 'Anthony', role:'player', bio:'Awesome dude', height: '6\'8\"', weight: 240, birthDate: Date.parse("MM-dd-yyyy", "05-29-1984"), birthPlace: 'Boston, MA', universityAttended: 'MIT')
         carmelo.team = bostonCeltics
         carmelo.gameStats = []
         bostonCeltics.players = [] << carmelo
@@ -41,7 +41,7 @@ class BootStrap {
         washingtonWizards.conference = eastern
         eastern.teams << washingtonWizards
 
-        Person kyrie = new Person(firstName: 'Kyrie', lastName: 'Irving', role:'player', bio:'xyz', height: '6\'3\"', weight: '193', birthDate: Date.parse("MM-dd-yyyy", "03-23-1992"), birthPlace: 'Boston, MA', universityAttended: 'BU')
+        Person kyrie = new Person(firstName: 'Kyrie', lastName: 'Irving', role:'player', bio:'Nice dude', height: '6\'3\"', weight: 193, birthDate: Date.parse("MM-dd-yyyy", "03-23-1992"), birthPlace: 'Boston, MA', universityAttended: 'BU')
         kyrie.team = washingtonWizards
         kyrie.gameStats = []
         washingtonWizards.players = [] << kyrie
@@ -50,7 +50,7 @@ class BootStrap {
         torontoRaptors.conference = eastern
         eastern.teams << torontoRaptors
 
-        Person andrew = new Person(firstName: 'Andrew', lastName: 'Wiggins', role:'player', bio:'xyz', height: '6\'8\"', weight: '199', birthDate: Date.parse("MM-dd-yyyy", "02-23-1995"), birthPlace: 'Boston, MA', universityAttended: 'BU')
+        Person andrew = new Person(firstName: 'Andrew', lastName: 'Wiggins', role:'player', bio:'Awesome player', height: '6\'8\"', weight: 199, birthDate: Date.parse("MM-dd-yyyy", "02-23-1995"), birthPlace: 'Boston, MA', universityAttended: 'BU')
         andrew.team = torontoRaptors
         andrew.gameStats = []
         torontoRaptors.players = [] << andrew
@@ -59,7 +59,7 @@ class BootStrap {
         californiaStateWarriors.conference = western
         western.teams << californiaStateWarriors
 
-        Person hassan = new Person(firstName: 'Hassan', lastName: 'Whiteside', role:'player', bio:'xyz', height: '7\'0\"', weight: '265', birthDate: Date.parse("MM-dd-yyyy", "06-13-1989"), birthPlace: 'Boston, MA', universityAttended: 'BU')
+        Person hassan = new Person(firstName: 'Hassan', lastName: 'Whiteside', role:'player', bio:'Nice player', height: '7\'0\"', weight: 265, birthDate: Date.parse("MM-dd-yyyy", "06-13-1989"), birthPlace: 'Boston, MA', universityAttended: 'BU')
         hassan.team = californiaStateWarriors
         hassan.gameStats = []
         californiaStateWarriors.players = [] << hassan
@@ -68,7 +68,7 @@ class BootStrap {
         sanAntoniaSpurs.conference = western
         western.teams << sanAntoniaSpurs
 
-        Person demarcus = new Person(firstName: 'DeMarcus', lastName: 'Cousins', role:'player', bio:'xyz', height: '6\'11\"', weight: '270', birthDate: Date.parse("MM-dd-yyyy", "08-13-1990"), birthPlace: 'Boston, MA', universityAttended: 'BU')
+        Person demarcus = new Person(firstName: 'DeMarcus', lastName: 'Cousins', role:'player', bio:'Awesome guy', height: '6\'11\"', weight: 270, birthDate: Date.parse("MM-dd-yyyy", "08-13-1990"), birthPlace: 'Boston, MA', universityAttended: 'BU')
         demarcus.team = sanAntoniaSpurs
         demarcus.gameStats = []
         sanAntoniaSpurs.players = [] << demarcus
@@ -77,7 +77,7 @@ class BootStrap {
         houstonRockets.conference = western
         western.teams << houstonRockets
 
-        Person derio = new Person(firstName: 'Dario', lastName: 'Saric', role:'player', bio:'xyz', height: '6\'10\"', weight: '223', birthDate: Date.parse("MM-dd-yyyy", "04-08-1994"), birthPlace: 'Boston, MA', universityAttended: 'BU')
+        Person derio = new Person(firstName: 'Dario', lastName: 'Saric', role:'player', bio:'Great guy', height: '6\'10\"', weight: 223, birthDate: Date.parse("MM-dd-yyyy", "04-08-1994"), birthPlace: 'Boston, MA', universityAttended: 'BU')
         derio.team = houstonRockets
         derio.gameStats = []
         houstonRockets.players = [] << derio
@@ -86,7 +86,7 @@ class BootStrap {
         utahJazz.conference = western
         western.teams << utahJazz
 
-        Person ricky = new Person(firstName: 'Ricky', lastName: 'Rubio', role:'player', bio:'xyz', height: '6\'4\"', weight: '190', birthDate: Date.parse("MM-dd-yyyy", "10-21-1990"), birthPlace: 'Boston, MA', universityAttended: 'BU')
+        Person ricky = new Person(firstName: 'Ricky', lastName: 'Rubio', role:'player', bio:'xyz', height: '6\'4\"', weight: 190, birthDate: Date.parse("MM-dd-yyyy", "10-21-1990"), birthPlace: 'Boston, MA', universityAttended: 'BU')
         ricky.team = utahJazz
         ricky.gameStats = []
         utahJazz.players = [] << ricky

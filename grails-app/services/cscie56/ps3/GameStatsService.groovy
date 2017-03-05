@@ -24,7 +24,7 @@ class GameStatsService {
             totalThreePointersAttempted += gameStats.threePointersAttempted
             totalPersonalFouls += gameStats.personalFouls
         }
-        return [totalMinutesPlayed: totalMinutesPlayed, totalPoints: totalPoints, totalAssists: totalAssists,
+        [totalMinutesPlayed: totalMinutesPlayed, totalPoints: totalPoints, totalAssists: totalAssists,
                 totalRebounds: totalRebounds, totalSteals: totalSteals, totalShotsMade: totalShotsMade,
                 totalShotsAttempted:totalShotsAttempted, totalThreePointersMade:totalThreePointersMade,
                 totalThreePointersAttempted:totalThreePointersAttempted, totalPersonalFouls:totalPersonalFouls]
@@ -45,20 +45,23 @@ class GameStatsService {
         def assistsMap = [:]
         def reboundsMap = [:]
         def stealsMap = [:]
+        def threePointersMadeMap = [:]
         playerList.each{player ->
-            int points = 0, assists = 0, rebounds = 0, steals = 0
+            int points = 0, assists = 0, rebounds = 0, steals = 0, threePointersMade = 0
             player.gameStats.each{gameStats ->
                 points += gameStats.points
                 assists += gameStats.assists
                 rebounds += gameStats.rebounds
                 steals += gameStats.steals
+                threePointersMade += gameStats.threePointersMade
             }
             pointsMap.put(player, points)
             assistsMap.put(player, assists)
             reboundsMap.put(player, rebounds)
             stealsMap.put(player, steals)
+            threePointersMadeMap.put(player, threePointersMade)
         }
 
-        return [pointsMap: pointsMap, assistsMap: assistsMap, reboundsMap: reboundsMap, stealsMap: stealsMap]
+        [pointsMap: pointsMap, assistsMap: assistsMap, reboundsMap: reboundsMap, stealsMap: stealsMap, threePointersMadeMap: threePointersMadeMap]
     }
 }

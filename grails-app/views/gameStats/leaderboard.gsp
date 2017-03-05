@@ -19,5 +19,8 @@
         <br>
         <h3> Steals </h3>
         <g:render template="leaderboardTable" model="[list:steals]" />
+        <br>
+        <h3> Three pointers made </h3>
+        <g:render template="leaderboardTable" model="[list:threePointersMade]" />
     </body>
 </html>

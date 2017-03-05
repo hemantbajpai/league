@@ -12,15 +12,28 @@ class GameStats {
     int steals
     int shotsAttempted
     int shotsMade
-    //double shotsPercentage
     int threePointersAttempted
     int threePointersMade
-    //double threePointerPercentage
     int personalFouls
 
     static belongsTo = [game:Game, player:Person]
 
     static constraints = {
+        shotsMade validator: {val, obj, errors ->
+            if(val > obj.shotsAttempted) {
+                errors.rejectValue('shotsMade', 'shotsMadeLessThanAttempted')
+            }
+        }
+        threePointersMade validator: {val, obj, errors ->
+            if(val > obj.threePointersAttempted) {
+                errors.rejectValue('threePointersMade', 'threePointersMadeLessThanAttempted')
+            }
+        }
+        points validator: {val, obj, errors ->
+            if(val != 2*obj.shotsMade+3*obj.threePointersMade) {
+                errors.rejectValue('points', 'pointsShouldBeThis')
+            }
+        }
     }
 
     def shotsPercentage() {
@@ -28,7 +41,6 @@ class GameStats {
             "0.0"
         else
             String.format("%.1f",(100*shotsMade)/(shotsAttempted))
-            //(100*((double)shotsMade)/((double)shotsAttempted)).round(1)
     }
 
     def threePointerPercentage() {
@@ -36,7 +48,6 @@ class GameStats {
             "0.0"
         else
             String.format("%.1f",(100*threePointersMade )/(threePointersAttempted))
-            //(100*((double)threePointersMade)/((double)threePointersAttempted)).round(1)
     }
 
     def generateOutput() {
@@ -48,10 +59,8 @@ class GameStats {
         steals = rand.nextInt(5)
         shotsAttempted = 1+rand.nextInt(25)
         shotsMade = rand.nextInt(shotsAttempted)
-        //shotsPercentage = shotsPercentage()
         threePointersAttempted = 1+rand.nextInt(10)
         threePointersMade = rand.nextInt(threePointersAttempted)
-        //threePointerPercentage = threePointerPercentage()
         personalFouls = rand.nextInt(5)
 
         points = 2*shotsMade + 3*threePointersMade
