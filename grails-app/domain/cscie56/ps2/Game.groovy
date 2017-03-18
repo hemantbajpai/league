@@ -1,5 +1,7 @@
 package cscie56.ps2
 
+import cscie56.ps3.GameStats
+
 class Game {
 
     Team homeTeam
@@ -10,6 +12,7 @@ class Game {
     String location
 
     static belongsTo = [season:Season]
+    static hasMany = [gameStats: GameStats]
 
     static constraints = {
         date validator: {val, obj, errors ->
