@@ -46,10 +46,14 @@ class Game {
         }
         else {
             homeTeam.results = "T" + homeTeam.results
-            ++homeTeam.ties
+            ++homeTeam.homeTies
 
             awayTeam.results = "T" + awayTeam.results
-            ++awayTeam.ties
+            ++awayTeam.awayTies
         }
+        homeTeam.scored += homeTeamScore
+        awayTeam.scored += awayTeamScore
+        homeTeam.allowed += awayTeamScore
+        awayTeam.allowed += homeTeamScore
     }
 }

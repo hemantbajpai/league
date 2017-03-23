@@ -10,6 +10,7 @@ class UrlMappings {
         }
 
         "/leaderboard"(controller: "GameStats", action: "leaderboard")
+        "/leaderboardShowAll"(controller: "GameStats", action: "leaderboardShowAll")
         "/"(view:"/index")
         "500"(view:'/error')
         "404"(view:'/notFound')

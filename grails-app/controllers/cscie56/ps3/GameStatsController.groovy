@@ -22,6 +22,12 @@ class GameStatsController {
         render view: 'leaderboard', model:[points: allMaps["pointsMap"].sort{-it.value}, assists: allMaps["assistsMap"].sort{-it.value}, rebounds: allMaps["reboundsMap"].sort{-it.value}, steals: allMaps["stealsMap"].sort{-it.value}, threePointersMade: allMaps["threePointersMadeMap"].sort{-it.value}]
     }
 
+    def leaderboardShowAll() {
+        GameStats gameStats = GameStats.first()
+        def allMaps = GameStatsService.getLeaderboardInfo(gameStats.game.season.league)
+        render view: 'leaderboardShowAll', model:[points: allMaps["pointsMap"].sort{-it.value}, assists: allMaps["assistsMap"].sort{-it.value}, rebounds: allMaps["reboundsMap"].sort{-it.value}, steals: allMaps["stealsMap"].sort{-it.value}, threePointersMade: allMaps["threePointersMadeMap"].sort{-it.value}]
+    }
+
     def show(GameStats gameStats) {
         respond gameStats
     }

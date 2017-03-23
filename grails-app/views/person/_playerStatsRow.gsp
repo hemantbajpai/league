@@ -8,34 +8,36 @@
     <table>
         <thead>
             <tr>
-                <th>MIN</th>
-                <th>PTS</th>
-                <th>FGM</th>
-                <th>FGA</th>
-                <th>FG%</th>
-                <th>3PM</th>
-                <th>3PA</th>
-                <th>3P%</th>
-                <th>REB</th>
-                <th>AST</th>
-                <th>STL</th>
-                <th>PF</th>
+                <th class="col-sm-1 col-xs-2">GP</th>
+                <th class="col-sm-1 col-xs-2">MP</th>
+                <th class="col-sm-1 col-xs-2">P</th>
+                <th class="col-sm-1 col-xs-2">A</th>
+                <th class="col-sm-1 col-xs-2">R</th>
+                <th class="col-sm-1 col-xs-2">ST</th>
+                <th class="col-sm-1 hidden-xs">SM</th>
+                <th class="col-sm-1 hidden-xs">SA</th>
+                <th class="col-sm-1 hidden-xs">S%</th>
+                <th class="col-sm-1 hidden-xs">3PM</th>
+                <th class="col-sm-1 hidden-xs">3PA</th>
+                <th class="col-sm-1 hidden-xs">3P%</th>
+                <th class="col-sm-1 hidden-xs">PF</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td>${statList[0]}</td>
-                <td>${statList[1]}</td>
-                <td>${statList[2]}</td>
-                <td>${statList[3]}</td>
-                <td>${statList[4]}</td>
-                <td>${statList[5]}</td>
-                <td>${statList[6]}</td>
-                <td>${statList[7]}</td>
-                <td>${statList[8]}</td>
-                <td>${statList[9]}</td>
-                <td>${statList[10]}</td>
-                <td>${statList[11]}</td>
+                <td class="col-sm-1 col-xs-2">${statList[0]}</td>
+                <td class="col-sm-1 col-xs-2">${statList[1]}</td>
+                <td class="col-sm-1 col-xs-2">${statList[2]}</td>
+                <td class="col-sm-1 col-xs-2">${statList[3]}</td>
+                <td class="col-sm-1 col-xs-2">${statList[4]}</td>
+                <td class="col-sm-1 col-xs-2">${statList[5]}</td>
+                <td class="col-sm-1 hidden-xs">${statList[6]}</td>
+                <td class="col-sm-1 hidden-xs">${statList[7]}</td>
+                <td class="col-sm-1 hidden-xs">${statList[8]}</td>
+                <td class="col-sm-1 hidden-xs">${statList[9]}</td>
+                <td class="col-sm-1 hidden-xs">${statList[10]}</td>
+                <td class="col-sm-1 hidden-xs">${statList[11]}</td>
+                <td class="col-sm-1 hidden-xs">${statList[12]}</td>
             </tr>
         </tbody>
     </table>

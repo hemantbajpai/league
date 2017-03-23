@@ -21,13 +21,14 @@ class SeasonController {
                 values.add(index+1)
                 values.add(team.homeWins+team.awayWins)
                 values.add(team.homeLosses+team.awayLosses)
+                values.add(team.homeTies+team.awayTies)
                 values.add(team.getPercentage())
                 values.add((leadingWins-team.homeWins-team.awayWins+team.homeLosses+team.awayLosses-leadingLosses)/2)
-                values.add("$team.homeWins-$team.homeLosses")
-                values.add("$team.awayWins-$team.awayLosses")
+                values.add("$team.homeWins-$team.homeLosses-$team.homeTies")
+                values.add("$team.awayWins-$team.awayLosses-$team.awayTies")
                 values.add(team.getLastTen())
                 values.add(team.getStreak())
-
+                values.add(team.getDelta())
                 if(conference.name == 'eastern')
                     eastResultsMap.put(team, values)
                 else

@@ -26,6 +26,18 @@
                 <td><a href="/person/stats/${list.keySet()[4].id}"><img src="${resource(dir:"images", file: "${list.keySet()[4].firstName + ".png"}") }" style="width:24px;height:24px;border:0;"/>${list.keySet()[4].firstName} ${list.keySet()[4].lastName}</a></td>
                 <td>${list.values()[4]}</td>
             </tr>
+            <tr>
+                <td><a href="/person/stats/${list.keySet()[5].id}"><img src="${resource(dir:"images", file: "${list.keySet()[5].firstName + ".png"}") }" style="width:24px;height:24px;border:0;"/>${list.keySet()[5].firstName} ${list.keySet()[5].lastName}</a></td>
+                <td>${list.values()[5]}</td>
+            </tr>
+            <tr>
+                <td><a href="/person/stats/${list.keySet()[6].id}"><img src="${resource(dir:"images", file: "${list.keySet()[6].firstName + ".png"}") }" style="width:24px;height:24px;border:0;"/>${list.keySet()[6].firstName} ${list.keySet()[6].lastName}</a></td>
+                <td>${list.values()[6]}</td>
+            </tr>
+            <tr>
+                <td><a href="/person/stats/${list.keySet()[7].id}"><img src="${resource(dir:"images", file: "${list.keySet()[7].firstName + ".png"}") }" style="width:24px;height:24px;border:0;"/>${list.keySet()[7].firstName} ${list.keySet()[7].lastName}</a></td>
+                <td>${list.values()[7]}</td>
+        </tr>
         </tbody>
     </table>
 </div>

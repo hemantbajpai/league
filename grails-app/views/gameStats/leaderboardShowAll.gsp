@@ -20,30 +20,30 @@
 
                 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                 <h4> Points </h4>
-                <g:render template="leaderboardTable" model="[list:points]" />
+                <g:render template="leaderboardTableShowAll" model="[list:points]" />
                 <br>
                 </div>
 
                 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                 <h4> Assists </h4>
-                <g:render template="leaderboardTable" model="[list:assists]" />
+                <g:render template="leaderboardTableShowAll" model="[list:assists]" />
                 <br>
                 </div>
 
                 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                 <h4> Rebounds </h4>
-                <g:render template="leaderboardTable" model="[list:rebounds]" />
+                <g:render template="leaderboardTableShowAll" model="[list:rebounds]" />
                 <br>
                 </div>
 
                 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                 <h4> Steals </h4>
-                <g:render template="leaderboardTable" model="[list:steals]" />
+                <g:render template="leaderboardTableShowAll" model="[list:steals]" />
                 <br>
                 </div>
             </div>
 
-            <a href="/leaderboardShowAll">Show all</a>
+            <a href="/leaderboard">Show less</a>
         </div>
     </body>
 </html>

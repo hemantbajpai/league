@@ -8,13 +8,24 @@ class Team implements Comparable{
     int awayWins
     int homeLosses
     int awayLosses
-    int ties
+    int homeTies
+    int awayTies
+    int scored
+    int allowed
 
     static belongsTo = [conference:Conference]
     static hasMany = [players: Person, coaches:Person]
 
     static constraints = {
         name blank:false, unique:true
+    }
+
+    def getDelta() {
+        int diff = scored - allowed
+        if(diff > 0)
+            "+" + diff
+        else
+            diff
     }
 
     //method to get streak
@@ -35,7 +46,8 @@ class Team implements Comparable{
     //method to get last 10
     def getLastTen() {
         int wins = 0
-        int losses
+        int losses = 0
+        int ties = 0
         int length = 10
         if(results.length() < length)
             length = results.length()
@@ -45,15 +57,18 @@ class Team implements Comparable{
                 ++wins
             }
             else if(results[i] == "L"){
-                ++losses;
+                ++losses
+            }
+            else if(results[i] == "T"){
+                ++ties
             }
         }
-        ""+wins+"-"+losses
+        ""+wins+"-"+losses+"-"+ties
     }
 
     //method to get percentage
     def getPercentage() {
-        String.format("%.3f",(homeWins + awayWins )/(homeWins + awayWins + homeLosses + awayLosses))
+        String.format("%.1f",100*(homeWins + awayWins )/(homeWins + awayWins + homeLosses + awayLosses))
     }
 
 
@@ -64,9 +79,9 @@ class Team implements Comparable{
         else if(homeWins + awayWins < other.homeWins + other.awayWins)
             return 1
         else {
-            if(ties > other.ties)
+            if(homeTies+awayTies > other.homeTies+other.awayTies)
                 return -1
-            else if(ties < other.ties)
+            else if(homeTies+awayTies < other.homeTies+other.awayTies)
                 return 1
             else
                 return 0
