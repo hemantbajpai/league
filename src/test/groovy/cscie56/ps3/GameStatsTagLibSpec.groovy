@@ -39,17 +39,18 @@ class GameStatsTagLibSpec extends Specification {
             tagLib.total(player: player)
         then:
             render.template == 'playerStatsRow'
-            render.model['statList'].size() == 12
-            render.model['statList'][0] == player.gameStats[0].minutesPlayed
-            render.model['statList'][1] == player.gameStats[0].points
-            render.model['statList'][2] == player.gameStats[0].shotsMade
-            render.model['statList'][3] == player.gameStats[0].shotsAttempted
-            render.model['statList'][5] == player.gameStats[0].threePointersMade
-            render.model['statList'][6] == player.gameStats[0].threePointersAttempted
-            render.model['statList'][8] == player.gameStats[0].rebounds
-            render.model['statList'][9] == player.gameStats[0].assists
-            render.model['statList'][10] == player.gameStats[0].steals
-            render.model['statList'][11] == player.gameStats[0].personalFouls
+            render.model['statList'].size() == 13
+            render.model['statList'][0] == 6
+            render.model['statList'][1] == player.gameStats[0].minutesPlayed
+            render.model['statList'][2] == player.gameStats[0].points
+            render.model['statList'][3] == player.gameStats[0].assists
+            render.model['statList'][4] == player.gameStats[0].rebounds
+            render.model['statList'][5] == player.gameStats[0].steals
+            render.model['statList'][6] == player.gameStats[0].shotsMade
+            render.model['statList'][7] == player.gameStats[0].shotsAttempted
+            render.model['statList'][9] == player.gameStats[0].threePointersMade
+            render.model['statList'][10] == player.gameStats[0].threePointersAttempted
+            render.model['statList'][12] == player.gameStats[0].personalFouls
     }
 
     void "test average tag"() {
@@ -58,6 +59,6 @@ class GameStatsTagLibSpec extends Specification {
             tagLib.average(player: player)
         then:
             render.template == 'playerStatsRow'
-            render.model['statList'].size() == 12
+            render.model['statList'].size() == 13
     }
 }

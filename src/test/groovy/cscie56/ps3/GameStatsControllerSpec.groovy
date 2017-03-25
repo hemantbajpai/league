@@ -56,6 +56,25 @@ class GameStatsControllerSpec extends Specification {
             model.threePointersMade[gameStats.player] == gameStats.threePointersMade
     }
 
+    void "Test the leaderboardShowAll return correct model" () {
+
+        when:"The leaderboardShowAll is executed"
+        populateValidParams(params)
+        def gameStats = new GameStats(params)
+        gameStats.generateOutput()
+        gameStats.player.gameStats = [] << gameStats
+        gameStats.game.gameStats = [] << gameStats
+        gameStats.save(flush:true)
+        controller.leaderboardShowAll()
+
+        then: "The model is correct"
+        model.points[gameStats.player] == gameStats.points
+        model.assists[gameStats.player] == gameStats.assists
+        model.rebounds[gameStats.player] == gameStats.rebounds
+        model.steals[gameStats.player] == gameStats.steals
+        model.threePointersMade[gameStats.player] == gameStats.threePointersMade
+    }
+
     void "Test the index action returns the correct model"() {
 
         when:"The index action is executed"

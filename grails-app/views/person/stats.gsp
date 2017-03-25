@@ -15,6 +15,9 @@
     <body>
 
         <div class="playerstatpage">
+            <img src="${resource(dir:"images", file: "${player.firstName + ".png"}") }"/>
+            <h2> ${player.firstName} ${player.lastName} </h2>
+            <br>
 
             <ul class="nav nav-tabs">
                 <li class="active"><a data-toggle="tab" href="#info">Player Info</a></li>
@@ -24,9 +27,6 @@
 
             <div class="tab-content">
                 <div id="info" class="tab-pane active">
-                    <img src="${resource(dir:"images", file: "${player.firstName + ".png"}") }"/>
-                    <h2> ${player.firstName} ${player.lastName} </h2>
-                    <br>
                     <h4>1. Bio ${player.bio}</h4>
                     <h4>2. Team ${player.team.name}</h4>
                     <h4>3. Height ${player.height}</h4>

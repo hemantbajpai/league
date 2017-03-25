@@ -14,6 +14,7 @@
 </head>
 <body>
 
+
     <div class="navbar navbar-default navbar-static-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
@@ -27,7 +28,6 @@
             </div>
             <div class="navbar-collapse collapse" aria-expanded="false" style="height: 0.8px;">
                 <ul class="nav navbar-nav navbar-left">
-                    %{--<g:pageProperty name="page.nav" />--}%
                     <li><a href="/leaderboard">LeaderBoard</a></li>
                     <li><a href="/season/showStandings/1">Standings</a></li>
                     <li><a href="/person/index">Players</a></li>
@@ -35,6 +35,7 @@
             </div>
         </div>
     </div>
+
 
     <g:layoutBody/>
 
