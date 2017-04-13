@@ -39,11 +39,11 @@
                 <tr>
                     <td class="col-sm-2 col-xs-3"><g:link action="stats" id="${person.id}">${person.firstName} ${person.lastName}</g:link></td>
                     <td class="col-sm-2 col-xs-3">${person.team.name}</td>
-                    <td class="col-sm-1 col-xs-3">${person.height}</td>
-                    <td class="col-sm-1 col-xs-3">${person.weight}</td>
-                    <td class="col-sm-2 hidden-xs"><g:formatDate format="MM/dd/yyyy" date="${person.birthDate}" /></td>
-                    <td class="col-sm-2 hidden-xs">${person.birthPlace}</td>
-                    <td class="col-sm-2 hidden-xs">${person.universityAttended}</td>
+                    <td class="col-sm-1 col-xs-3">${person.user.height}</td>
+                    <td class="col-sm-1 col-xs-3">${person.user.weight}</td>
+                    <td class="col-sm-2 hidden-xs"><g:formatDate format="MM/dd/yyyy" date="${person.user.birthDate}" /></td>
+                    <td class="col-sm-2 hidden-xs">${person.user.birthPlace}</td>
+                    <td class="col-sm-2 hidden-xs">${person.user.universityAttended}</td>
                 </tr>
                 </g:each>
                 </tbody>

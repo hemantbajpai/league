@@ -7,10 +7,59 @@ import cscie56.ps2.Person
 import cscie56.ps2.Season
 import cscie56.ps2.Team
 import cscie56.ps3.GameStats
+import cscie56.ps5.BlogEntry
+import cscie56.ps5.Role
+import cscie56.ps5.User
+import cscie56.ps5.UserRole
 
 class BootStrap {
 
     def init = { servletContext ->
+
+        User admin = new User(username: 'admin', password: 'supersecret', bio: 'Administratot', birthDate: Date.parse("MM-dd-yyyy", "10-04-1984"), birthPlace: 'Boston', height: '6\'2\"', weight: '200', universityAttended: 'Harvard', blogEntries: [], enabled: true)
+        admin.save(flush:true,failOnError:true)
+
+        User user1 = new User(username:'user1',password: 'secret', bio:'Great player', height: '6\'11\"', weight: 253, birthDate: Date.parse("MM-dd-yyyy", "03-11-1993"), birthPlace: 'Boston, MA', universityAttended: 'Harvard', blogEntries: [], enabled: true )
+        user1.save(flush:true,failOnError:true)
+
+        User user2 = new User(username:'user2',password: 'secret', bio:'Awesome dude', height: '6\'8\"', weight: 240, birthDate: Date.parse("MM-dd-yyyy", "05-29-1984"), birthPlace: 'Boston, MA', universityAttended: 'MIT', blogEntries: [], enabled: true )
+        user2.save(flush:true,failOnError:true)
+
+        User user3 = new User(username:'user3',password: 'secret', bio:'Nice dude', height: '6\'3\"', weight: 193, birthDate: Date.parse("MM-dd-yyyy", "03-23-1992"), birthPlace: 'Boston, MA', universityAttended: 'BU', blogEntries: [], enabled: true )
+        user3.save(flush:true,failOnError:true)
+
+        User user4 = new User(username:'user4',password: 'secret', bio:'Awesome player', height: '6\'8\"', weight: 199, birthDate: Date.parse("MM-dd-yyyy", "02-23-1995"), birthPlace: 'Boston, MA', universityAttended: 'BU', blogEntries: [], enabled: true )
+        user4.save(flush:true,failOnError:true)
+
+        User user5 = new User(username:'user5',password: 'secret', bio:'Nice player', height: '7\'0\"', weight: 265, birthDate: Date.parse("MM-dd-yyyy", "06-13-1989"), birthPlace: 'Boston, MA', universityAttended: 'BU', blogEntries: [], enabled: true )
+        user5.save(flush:true,failOnError:true)
+
+        User user6 = new User(username:'user6',password: 'secret', bio:'Awesome guy', height: '6\'11\"', weight: 270, birthDate: Date.parse("MM-dd-yyyy", "08-13-1990"), birthPlace: 'Boston, MA', universityAttended: 'BU', blogEntries: [], enabled: true )
+        user6.save(flush:true,failOnError:true)
+
+        User user7 = new User(username:'user7',password: 'secret', bio:'Great guy', height: '6\'10\"', weight: 223, birthDate: Date.parse("MM-dd-yyyy", "04-08-1994"), birthPlace: 'Boston, MA', universityAttended: 'BU', blogEntries: [], enabled: true )
+        user7.save(flush:true,failOnError:true)
+
+        User user8 = new User(username:'user8',password: 'secret', bio:'xyz', height: '6\'4\"', weight: 190, birthDate: Date.parse("MM-dd-yyyy", "10-21-1990"), birthPlace: 'Boston, MA', universityAttended: 'BU', blogEntries: [], enabled: true )
+        user8.save(flush:true,failOnError:true)
+
+        Role adminRole = new Role(authority: Role.ROLE_ADMIN)
+        adminRole.save(flush:true,failOnError:true)
+        Role userRole = new Role(authority: Role.ROLE_USER)
+        userRole.save(flush:true,failOnError:true)
+
+        UserRole.create(admin, adminRole).save(flush:true, failOnError:true)
+        UserRole.create(admin, userRole).save(flush:true, failOnError:true)
+        UserRole.create(user1, userRole).save(flush:true, failOnError:true)
+        UserRole.create(user2, userRole).save(flush:true, failOnError:true)
+        UserRole.create(user3, userRole).save(flush:true, failOnError:true)
+        UserRole.create(user4, userRole).save(flush:true, failOnError:true)
+        UserRole.create(user5, userRole).save(flush:true, failOnError:true)
+        UserRole.create(user6, userRole).save(flush:true, failOnError:true)
+        UserRole.create(user7, userRole).save(flush:true, failOnError:true)
+        UserRole.create(user8, userRole).save(flush:true, failOnError:true)
+
+
         League league = new League()
 
         Conference eastern = new Conference(teams: [], name:'eastern')
@@ -23,7 +72,7 @@ class BootStrap {
         clevelandCavaliers.conference = eastern
         eastern.teams << clevelandCavaliers
 
-        Person anthony = new Person(firstName: 'Anthony', lastName: 'Davis', role:'player', bio:'Great player', height: '6\'11\"', weight: 253, birthDate: Date.parse("MM-dd-yyyy", "03-11-1993"), birthPlace: 'Boston, MA', universityAttended: 'Harvard')
+        Person anthony = new Person(firstName: 'Anthony', lastName: 'Davis', role:'player', user: user1)
         anthony.team = clevelandCavaliers
         anthony.gameStats = []
         clevelandCavaliers.players = [] << anthony
@@ -32,7 +81,7 @@ class BootStrap {
         bostonCeltics.conference = eastern
         eastern.teams << bostonCeltics
 
-        Person carmelo = new Person(firstName: 'Carmelo', lastName: 'Anthony', role:'player', bio:'Awesome dude', height: '6\'8\"', weight: 240, birthDate: Date.parse("MM-dd-yyyy", "05-29-1984"), birthPlace: 'Boston, MA', universityAttended: 'MIT')
+        Person carmelo = new Person(firstName: 'Carmelo', lastName: 'Anthony', role:'player', user: user2)
         carmelo.team = bostonCeltics
         carmelo.gameStats = []
         bostonCeltics.players = [] << carmelo
@@ -41,7 +90,7 @@ class BootStrap {
         washingtonWizards.conference = eastern
         eastern.teams << washingtonWizards
 
-        Person kyrie = new Person(firstName: 'Kyrie', lastName: 'Irving', role:'player', bio:'Nice dude', height: '6\'3\"', weight: 193, birthDate: Date.parse("MM-dd-yyyy", "03-23-1992"), birthPlace: 'Boston, MA', universityAttended: 'BU')
+        Person kyrie = new Person(firstName: 'Kyrie', lastName: 'Irving', role:'player', user: user3)
         kyrie.team = washingtonWizards
         kyrie.gameStats = []
         washingtonWizards.players = [] << kyrie
@@ -50,7 +99,7 @@ class BootStrap {
         torontoRaptors.conference = eastern
         eastern.teams << torontoRaptors
 
-        Person andrew = new Person(firstName: 'Andrew', lastName: 'Wiggins', role:'player', bio:'Awesome player', height: '6\'8\"', weight: 199, birthDate: Date.parse("MM-dd-yyyy", "02-23-1995"), birthPlace: 'Boston, MA', universityAttended: 'BU')
+        Person andrew = new Person(firstName: 'Andrew', lastName: 'Wiggins', role:'player', user: user4)
         andrew.team = torontoRaptors
         andrew.gameStats = []
         torontoRaptors.players = [] << andrew
@@ -59,7 +108,7 @@ class BootStrap {
         californiaStateWarriors.conference = western
         western.teams << californiaStateWarriors
 
-        Person hassan = new Person(firstName: 'Hassan', lastName: 'Whiteside', role:'player', bio:'Nice player', height: '7\'0\"', weight: 265, birthDate: Date.parse("MM-dd-yyyy", "06-13-1989"), birthPlace: 'Boston, MA', universityAttended: 'BU')
+        Person hassan = new Person(firstName: 'Hassan', lastName: 'Whiteside', role:'player', user: user5)
         hassan.team = californiaStateWarriors
         hassan.gameStats = []
         californiaStateWarriors.players = [] << hassan
@@ -68,7 +117,7 @@ class BootStrap {
         sanAntoniaSpurs.conference = western
         western.teams << sanAntoniaSpurs
 
-        Person demarcus = new Person(firstName: 'DeMarcus', lastName: 'Cousins', role:'player', bio:'Awesome guy', height: '6\'11\"', weight: 270, birthDate: Date.parse("MM-dd-yyyy", "08-13-1990"), birthPlace: 'Boston, MA', universityAttended: 'BU')
+        Person demarcus = new Person(firstName: 'DeMarcus', lastName: 'Cousins', role:'player', user: user6)
         demarcus.team = sanAntoniaSpurs
         demarcus.gameStats = []
         sanAntoniaSpurs.players = [] << demarcus
@@ -77,7 +126,7 @@ class BootStrap {
         houstonRockets.conference = western
         western.teams << houstonRockets
 
-        Person derio = new Person(firstName: 'Dario', lastName: 'Saric', role:'player', bio:'Great guy', height: '6\'10\"', weight: 223, birthDate: Date.parse("MM-dd-yyyy", "04-08-1994"), birthPlace: 'Boston, MA', universityAttended: 'BU')
+        Person derio = new Person(firstName: 'Dario', lastName: 'Saric', role:'player', user: user7)
         derio.team = houstonRockets
         derio.gameStats = []
         houstonRockets.players = [] << derio
@@ -86,7 +135,7 @@ class BootStrap {
         utahJazz.conference = western
         western.teams << utahJazz
 
-        Person ricky = new Person(firstName: 'Ricky', lastName: 'Rubio', role:'player', bio:'xyz', height: '6\'4\"', weight: 190, birthDate: Date.parse("MM-dd-yyyy", "10-21-1990"), birthPlace: 'Boston, MA', universityAttended: 'BU')
+        Person ricky = new Person(firstName: 'Ricky', lastName: 'Rubio', role:'player', user: user8)
         ricky.team = utahJazz
         ricky.gameStats = []
         utahJazz.players = [] << ricky

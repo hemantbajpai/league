@@ -17,5 +17,6 @@ if (typeof jQuery !== 'undefined') {
         }).ajaxStop(function() {
             $('#spinner').fadeOut();
         });
+
     })(jQuery);
 }

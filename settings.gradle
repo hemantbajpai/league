@@ -1,2 +1,5 @@
 rootProject.name = 'Pset2'
 
+include 'bioprofile'
+
+project(':bioprofile').projectDir = new File('C:\\Users\\HI7\\IdeaProjects\\bioprofile')

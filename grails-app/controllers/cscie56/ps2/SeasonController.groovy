@@ -1,9 +1,13 @@
 package cscie56.ps2
 
+import cscie56.ps5.Role
+import grails.plugin.springsecurity.annotation.Secured
+
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
+@Secured([Role.ROLE_ANONYMOUS, Role.ROLE_USER, Role.ROLE_ADMIN])
 class SeasonController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]

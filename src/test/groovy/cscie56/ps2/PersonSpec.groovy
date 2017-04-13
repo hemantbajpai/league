@@ -1,5 +1,6 @@
 package cscie56.ps2
 
+import cscie56.ps5.User
 import grails.test.mixin.TestFor
 import spock.lang.Specification
 
@@ -18,7 +19,7 @@ class PersonSpec extends Specification {
     void "Person role should be coach or player"() {
         when:
             Team team = new Team()
-            Person person = new Person(firstName: "first", lastName: "last", role: "coach", bio: "xyz", birthDate: new Date(), birthPlace: "Boston, MA", height: "6\'11\"", weight: 190, universityAttended: "Harvard")
+            Person person = new Person(firstName: "first", lastName: "last", role: "coach", user: new User())
             person.team = team
             person.save(flush:true)
         then:
@@ -38,7 +39,7 @@ class PersonSpec extends Specification {
     void "Person first name can not be blank"() {
         when:
             Team team = new Team()
-            Person person = new Person(firstName: "", lastName: "last", role: "coach", bio: "xyz", birthDate: new Date(), birthPlace: "Boston, MA", height: "6\'11\"", weight: 190, universityAttended: "Harvard")
+            Person person = new Person(firstName: "", lastName: "last", role: "coach", user: new User())
             person.team = team
             person.save(flush: true)
         then:
@@ -53,7 +54,7 @@ class PersonSpec extends Specification {
     void "Person last name can not be blank"() {
         when:
             Team team = new Team()
-            Person person = new Person(firstName: "first", lastName: "", role: "coach", bio: "xyz", birthDate: new Date(), birthPlace: "Boston, MA", height: "6\'11\"", weight: 190, universityAttended: "Harvard")
+            Person person = new Person(firstName: "first", lastName: "", role: "coach", user: new User())
             person.team = team
             person.save(flush: true)
         then:
@@ -67,7 +68,7 @@ class PersonSpec extends Specification {
 
     void "Person should belong to a team"() {
         when:
-            Person person = new Person(firstName: "first", lastName: "last", role: "coach", bio: "xyz", birthDate: new Date(), birthPlace: "Boston, MA", height: "6\'11\"", weight: 190, universityAttended: "Harvard")
+            Person person = new Person(firstName: "first", lastName: "last", role: "coach", user: new User())
             person.save(flush: true)
         then:
             !person.validate()
@@ -79,21 +80,19 @@ class PersonSpec extends Specification {
             person.validate()
     }
 
-    void "height must be displayed in feet and inches"() {
+    void "Person should have a user"() {
         when:
-            Person person = new Person(firstName: "first", lastName: "last", role: "coach", bio: "xyz", birthDate: new Date(), birthPlace: "Boston, MA", height: height, weight: 190, universityAttended: "Harvard")
             Team team = new Team()
+            Person person = new Person(firstName: "first", lastName: "last", role: "coach")
             person.team = team
             person.save(flush: true)
         then:
-            person.validate() == result
-        where:
-        height            |        result
-        '6'               |        false
-        '6\''             |        true
-        '7\'5\"'          |        true
-        '5\'5'            |        false
-        '6\' 2\"'         |        true
-        '8\'5\"'          |        true
+            !person.validate()
+        when:
+            User user = new User()
+            person.user = user
+            person.save(flush:true)
+        then:
+            person.validate()
     }
 }

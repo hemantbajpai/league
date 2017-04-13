@@ -1,9 +1,13 @@
 package cscie56.ps2
 
+import cscie56.ps5.Role
+import grails.plugin.springsecurity.annotation.Secured
+
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
+@Secured([Role.ROLE_ANONYMOUS, Role.ROLE_USER, Role.ROLE_ADMIN])
 class PersonController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
@@ -14,7 +18,7 @@ class PersonController {
     }
 
     def stats(Person player) {
-        render view:'stats', model:[player:player, gameStats: player.gameStats]
+        render view:'stats', model:[player:player, gameStats: player.gameStats, blogs: player.user.blogEntries]
     }
 
     def show(Person person) {

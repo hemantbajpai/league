@@ -1,6 +1,7 @@
 package cscie56.ps2
 
 import cscie56.ps3.GameStats
+import cscie56.ps5.User
 
 class Person {
 
@@ -8,12 +9,7 @@ class Person {
     String lastName
     String role
 
-    String bio
-    Date birthDate
-    String birthPlace
-    String height
-    double weight
-    String universityAttended
+    User user
 
     static belongsTo = [team:Team]
     static hasMany = [gameStats: GameStats]
@@ -22,6 +18,5 @@ class Person {
         firstName blank: false
         lastName blank:false
         role inList: ["coach", "player"]
-        height (matches: "^(\\d{1,5})\\'((\\s?)(-?)(\\s?)([0-9]|(1[0-1]))\\\")?\$")
     }
 }

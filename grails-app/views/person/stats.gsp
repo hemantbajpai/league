@@ -23,18 +23,19 @@
                 <li class="active"><a data-toggle="tab" href="#info">Player Info</a></li>
                 <li><a data-toggle="tab" href="#seasonstats">Season Stats</a> </li>
                 <li><a data-toggle="tab" href="#games">Games</a> </li>
+                <li><a data-toggle="tab" href="#blog">Blog</a> </li>
             </ul>
 
             <div class="tab-content">
                 <div id="info" class="tab-pane active">
-                    <h4>1. Bio ${player.bio}</h4>
+                    <h4>1. Bio ${player.user.bio}</h4>
                     <h4>2. Team ${player.team.name}</h4>
-                    <h4>3. Height ${player.height}</h4>
-                    <h4>4. Weight ${player.weight}</h4>
-                    <h4>5. Birth Date <g:formatDate format="MM-dd-yyyy" date="${player.birthDate}" /></h4>
+                    <h4>3. Height ${player.user.height}</h4>
+                    <h4>4. Weight ${player.user.weight}</h4>
+                    <h4>5. Birth Date <g:formatDate format="MM-dd-yyyy" date="${player.user.birthDate}" /></h4>
                     <h4>6. Role ${player.role}</h4>
-                    <h4>7. Birth Place ${player.birthPlace}</h4>
-                    <h4>8. University Attended ${player.universityAttended}</h4><br>
+                    <h4>7. Birth Place ${player.user.birthPlace}</h4>
+                    <h4>8. University Attended ${player.user.universityAttended}</h4><br>
                 </div>
 
                 <div id="seasonstats" class="tab-pane fade">
@@ -70,6 +71,60 @@
                             </g:each>
                         </tbody>
                     </table>
+                </div>
+
+                <div id="blog" class="tab-pane fade">
+
+                    <g:if test="${sec.username() == player.user.username}">
+                        <br>
+                        <br>
+                        <button type="button" id="modalButton" class="btn-primary btn-sm" data-toggle="modal" data-target="#createModal">Create Blog Entry</button>
+                        <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <g:form controller="BlogEntry">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title" id="bookModalLabel">Create Blog</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div id="bookModalContent">
+                                                <g:textField size="80px" name="text"/><br/>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <g:actionSubmit name="save" value="Save" action="saveBlog"/>
+                                        <g:actionSubmit id="publishButton" name="publish" value="Save and Publish" action="publishBlog"/>
+                                    </div>
+                                    </g:form>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <br>
+                    </g:if>
+
+                    <g:each var="blog" in="${blogs}">
+                        <g:if test="${blog.published == true}">
+
+                            <g:render template="blog" model="[bean:blog]" />
+                            <sec:ifAnyGranted roles="ROLE_USER">
+                                <g:form controller="BlogEntry" params="[blogId: blog.id]">
+                                    <label>Write a Comment!</label>
+                                    <g:textField name="text"/><br/>
+                                    <g:actionSubmit value="Write Comment!" action="addComment"/>
+                                </g:form>
+                            </sec:ifAnyGranted>
+                        </g:if>
+                        <g:else>
+                            <g:if test="${sec.username() == blog.user.username}">
+                                <g:render template="blog" model="[bean:blog]" />
+                                <g:form controller="BlogEntry" params="[blogId: blog.id]">
+                                    <g:actionSubmit value="Publish" action="publishEntry"/>
+                                </g:form>
+                            </g:if>
+                        </g:else>
+                    </g:each>
                 </div>
             </div>
         </div>

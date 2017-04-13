@@ -32,6 +32,22 @@
                     <li><a href="/season/showStandings/1">Standings</a></li>
                     <li><a href="/person/index">Players</a></li>
                 </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <sec:ifLoggedIn>
+                        <li>
+                            <a>Logged in as <sec:username/></a>
+                        </li>
+                        <li><a>
+                            <g:form controller="logout" type="POST"><input class="btn btn-link" style="color: white !important;" type="submit" value="logout" /></g:form>
+                        </a>
+                        </li>
+                    </sec:ifLoggedIn>
+                    <sec:ifNotLoggedIn>
+                        <li>
+                            <g:link controller="login" action="index">login</g:link>
+                        </li>
+                    </sec:ifNotLoggedIn>
+                </ul>
             </div>
         </div>
     </div>

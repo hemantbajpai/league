@@ -1,6 +1,7 @@
 package cscie56.ps2
 
 import cscie56.ps3.GameStats
+import cscie56.ps5.User
 import grails.test.mixin.*
 import spock.lang.*
 
@@ -11,7 +12,7 @@ class PersonControllerSpec extends Specification {
     def populateValidParams(params) {
         assert params != null
         Team team = new Team();
-        params << [firstName:'first', lastName:'last', role: 'player', bio: 'great player', birthDate: new Date(), birthPlace: 'boston, ma', height: '6\'', weight: '190', universityAttended: 'Harvard', team: team, gameStats: []]
+        params << [firstName:'first', lastName:'last', role: 'player', user: new User(), team: team, gameStats: []]
     }
 
     void "Test stats function" () {
