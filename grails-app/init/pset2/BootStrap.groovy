@@ -19,28 +19,28 @@ class BootStrap {
         User admin = new User(username: 'admin', password: 'supersecret', bio: 'Administratot', birthDate: Date.parse("MM-dd-yyyy", "10-04-1984"), birthPlace: 'Boston', height: '6\'2\"', weight: '200', universityAttended: 'Harvard', blogEntries: [], enabled: true)
         admin.save(flush:true,failOnError:true)
 
-        User user1 = new User(username:'user1',password: 'secret', bio:'Great player', height: '6\'11\"', weight: 253, birthDate: Date.parse("MM-dd-yyyy", "03-11-1993"), birthPlace: 'Boston, MA', universityAttended: 'Harvard', blogEntries: [], enabled: true )
+        User user1 = new User(username:'anthony',password: 'secret', bio:'Great player', height: '6\'11\"', weight: 253, birthDate: Date.parse("MM-dd-yyyy", "03-11-1993"), birthPlace: 'Boston, MA', universityAttended: 'Harvard', blogEntries: [], enabled: true )
         user1.save(flush:true,failOnError:true)
 
-        User user2 = new User(username:'user2',password: 'secret', bio:'Awesome dude', height: '6\'8\"', weight: 240, birthDate: Date.parse("MM-dd-yyyy", "05-29-1984"), birthPlace: 'Boston, MA', universityAttended: 'MIT', blogEntries: [], enabled: true )
+        User user2 = new User(username:'carmelo',password: 'secret', bio:'Awesome dude', height: '6\'8\"', weight: 240, birthDate: Date.parse("MM-dd-yyyy", "05-29-1984"), birthPlace: 'Boston, MA', universityAttended: 'MIT', blogEntries: [], enabled: true )
         user2.save(flush:true,failOnError:true)
 
-        User user3 = new User(username:'user3',password: 'secret', bio:'Nice dude', height: '6\'3\"', weight: 193, birthDate: Date.parse("MM-dd-yyyy", "03-23-1992"), birthPlace: 'Boston, MA', universityAttended: 'BU', blogEntries: [], enabled: true )
+        User user3 = new User(username:'kyrie',password: 'secret', bio:'Nice dude', height: '6\'3\"', weight: 193, birthDate: Date.parse("MM-dd-yyyy", "03-23-1992"), birthPlace: 'Boston, MA', universityAttended: 'BU', blogEntries: [], enabled: true )
         user3.save(flush:true,failOnError:true)
 
-        User user4 = new User(username:'user4',password: 'secret', bio:'Awesome player', height: '6\'8\"', weight: 199, birthDate: Date.parse("MM-dd-yyyy", "02-23-1995"), birthPlace: 'Boston, MA', universityAttended: 'BU', blogEntries: [], enabled: true )
+        User user4 = new User(username:'andrew',password: 'secret', bio:'Awesome player', height: '6\'8\"', weight: 199, birthDate: Date.parse("MM-dd-yyyy", "02-23-1995"), birthPlace: 'Boston, MA', universityAttended: 'BU', blogEntries: [], enabled: true )
         user4.save(flush:true,failOnError:true)
 
-        User user5 = new User(username:'user5',password: 'secret', bio:'Nice player', height: '7\'0\"', weight: 265, birthDate: Date.parse("MM-dd-yyyy", "06-13-1989"), birthPlace: 'Boston, MA', universityAttended: 'BU', blogEntries: [], enabled: true )
+        User user5 = new User(username:'hassan',password: 'secret', bio:'Nice player', height: '7\'0\"', weight: 265, birthDate: Date.parse("MM-dd-yyyy", "06-13-1989"), birthPlace: 'Boston, MA', universityAttended: 'BU', blogEntries: [], enabled: true )
         user5.save(flush:true,failOnError:true)
 
-        User user6 = new User(username:'user6',password: 'secret', bio:'Awesome guy', height: '6\'11\"', weight: 270, birthDate: Date.parse("MM-dd-yyyy", "08-13-1990"), birthPlace: 'Boston, MA', universityAttended: 'BU', blogEntries: [], enabled: true )
+        User user6 = new User(username:'demarcus',password: 'secret', bio:'Awesome guy', height: '6\'11\"', weight: 270, birthDate: Date.parse("MM-dd-yyyy", "08-13-1990"), birthPlace: 'Boston, MA', universityAttended: 'BU', blogEntries: [], enabled: true )
         user6.save(flush:true,failOnError:true)
 
-        User user7 = new User(username:'user7',password: 'secret', bio:'Great guy', height: '6\'10\"', weight: 223, birthDate: Date.parse("MM-dd-yyyy", "04-08-1994"), birthPlace: 'Boston, MA', universityAttended: 'BU', blogEntries: [], enabled: true )
+        User user7 = new User(username:'dario',password: 'secret', bio:'Great guy', height: '6\'10\"', weight: 223, birthDate: Date.parse("MM-dd-yyyy", "04-08-1994"), birthPlace: 'Boston, MA', universityAttended: 'BU', blogEntries: [], enabled: true )
         user7.save(flush:true,failOnError:true)
 
-        User user8 = new User(username:'user8',password: 'secret', bio:'xyz', height: '6\'4\"', weight: 190, birthDate: Date.parse("MM-dd-yyyy", "10-21-1990"), birthPlace: 'Boston, MA', universityAttended: 'BU', blogEntries: [], enabled: true )
+        User user8 = new User(username:'ricky',password: 'secret', bio:'xyz', height: '6\'4\"', weight: 190, birthDate: Date.parse("MM-dd-yyyy", "10-21-1990"), birthPlace: 'Boston, MA', universityAttended: 'BU', blogEntries: [], enabled: true )
         user8.save(flush:true,failOnError:true)
 
         Role adminRole = new Role(authority: Role.ROLE_ADMIN)
