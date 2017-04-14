@@ -9,6 +9,7 @@
         <title><g:message code="default.show.label" args="[entityName]" /></title>
         <style>
             tr:nth-child(even) {background-color: #f2f2f2}
+            tab1 { padding-left: 4em; }
         </style>
     </head>
 
@@ -110,10 +111,11 @@
                             <g:render template="blog" model="[bean:blog]" />
                             <sec:ifAnyGranted roles="ROLE_USER">
                                 <g:form controller="BlogEntry" params="[blogId: blog.id]">
-                                    <label>Write a Comment!</label>
+                                    <label><tab1>Write a Comment</tab1></label>
                                     <g:textField name="text"/><br/>
-                                    <g:actionSubmit value="Write Comment!" action="addComment"/>
+                                    <tab1><g:actionSubmit value="Post Comment!" action="addComment"/></tab1>
                                 </g:form>
+                                <br>
                             </sec:ifAnyGranted>
                         </g:if>
                         <g:else>
