@@ -7,6 +7,7 @@ import cscie56.ps2.Person
 import cscie56.ps2.Season
 import cscie56.ps2.Team
 import cscie56.ps3.GameStats
+import cscie56.ps5.User
 import grails.test.mixin.integration.Integration
 import grails.transaction.*
 import spock.lang.*
@@ -37,7 +38,9 @@ class GameStatsServiceIntegrationSpec extends Specification {
             clevelandCavaliers.conference = eastern
             eastern.teams << clevelandCavaliers
 
-            Person anthony = new Person(firstName: 'Anthony', lastName: 'Davis', role:'player', bio:'xyz', height: '6\'11\"', weight: 253, birthDate: Date.parse("MM-dd-yyyy", "03-11-1993"), birthPlace: 'Boston, MA', universityAttended: 'Harvard')
+            User user1 = new User(username:'user1',password: 'secret', bio:'Great player', height: '6\'11\"', weight: 253, birthDate: Date.parse("MM-dd-yyyy", "03-11-1993"), birthPlace: 'Boston, MA', universityAttended: 'Harvard', blogEntries: [], enabled: true )
+
+            Person anthony = new Person(firstName: 'Anthony', lastName: 'Davis', role:'player', user: user1)
             anthony.team = clevelandCavaliers
             anthony.gameStats = []
             clevelandCavaliers.players = [] << anthony
@@ -46,7 +49,9 @@ class GameStatsServiceIntegrationSpec extends Specification {
             bostonCeltics.conference = eastern
             eastern.teams << bostonCeltics
 
-            Person carmelo = new Person(firstName: 'Carmelo', lastName: 'Anthony', role:'player', bio:'xyz', height: '6\'8\"', weight: 240, birthDate: Date.parse("MM-dd-yyyy", "05-29-1984"), birthPlace: 'Boston, MA', universityAttended: 'MIT')
+            User user2 = new User(username:'user2',password: 'secret', bio:'Awesome dude', height: '6\'8\"', weight: 240, birthDate: Date.parse("MM-dd-yyyy", "05-29-1984"), birthPlace: 'Boston, MA', universityAttended: 'MIT', blogEntries: [], enabled: true )
+
+            Person carmelo = new Person(firstName: 'Carmelo', lastName: 'Anthony', role:'player', user: user2)
             carmelo.team = bostonCeltics
             carmelo.gameStats = []
             bostonCeltics.players = [] << carmelo
@@ -55,7 +60,9 @@ class GameStatsServiceIntegrationSpec extends Specification {
             washingtonWizards.conference = eastern
             eastern.teams << washingtonWizards
 
-            Person kyrie = new Person(firstName: 'Kyrie', lastName: 'Irving', role:'player', bio:'xyz', height: '6\'3\"', weight: 193, birthDate: Date.parse("MM-dd-yyyy", "03-23-1992"), birthPlace: 'Boston, MA', universityAttended: 'BU')
+            User user3 = new User(username:'user3',password: 'secret', bio:'Nice dude', height: '6\'3\"', weight: 193, birthDate: Date.parse("MM-dd-yyyy", "03-23-1992"), birthPlace: 'Boston, MA', universityAttended: 'BU', blogEntries: [], enabled: true )
+
+            Person kyrie = new Person(firstName: 'Kyrie', lastName: 'Irving', role:'player', user: user3)
             kyrie.team = washingtonWizards
             kyrie.gameStats = []
             washingtonWizards.players = [] << kyrie
@@ -64,7 +71,9 @@ class GameStatsServiceIntegrationSpec extends Specification {
             torontoRaptors.conference = eastern
             eastern.teams << torontoRaptors
 
-            Person andrew = new Person(firstName: 'Andrew', lastName: 'Wiggins', role:'player', bio:'xyz', height: '6\'8\"', weight: 199, birthDate: Date.parse("MM-dd-yyyy", "02-23-1995"), birthPlace: 'Boston, MA', universityAttended: 'BU')
+            User user4 = new User(username:'user4',password: 'secret', bio:'Awesome player', height: '6\'8\"', weight: 199, birthDate: Date.parse("MM-dd-yyyy", "02-23-1995"), birthPlace: 'Boston, MA', universityAttended: 'BU', blogEntries: [], enabled: true )
+
+            Person andrew = new Person(firstName: 'Andrew', lastName: 'Wiggins', role:'player', user: user4)
             andrew.team = torontoRaptors
             andrew.gameStats = []
             torontoRaptors.players = [] << andrew
@@ -73,7 +82,9 @@ class GameStatsServiceIntegrationSpec extends Specification {
             californiaStateWarriors.conference = western
             western.teams << californiaStateWarriors
 
-            Person hassan = new Person(firstName: 'Hassan', lastName: 'Whiteside', role:'player', bio:'xyz', height: '7\'0\"', weight: 265, birthDate: Date.parse("MM-dd-yyyy", "06-13-1989"), birthPlace: 'Boston, MA', universityAttended: 'BU')
+            User user5 = new User(username:'user5',password: 'secret', bio:'Nice player', height: '7\'0\"', weight: 265, birthDate: Date.parse("MM-dd-yyyy", "06-13-1989"), birthPlace: 'Boston, MA', universityAttended: 'BU', blogEntries: [], enabled: true )
+
+            Person hassan = new Person(firstName: 'Hassan', lastName: 'Whiteside', role:'player', user: user5)
             hassan.team = californiaStateWarriors
             hassan.gameStats = []
             californiaStateWarriors.players = [] << hassan
@@ -82,7 +93,9 @@ class GameStatsServiceIntegrationSpec extends Specification {
             sanAntoniaSpurs.conference = western
             western.teams << sanAntoniaSpurs
 
-            Person demarcus = new Person(firstName: 'DeMarcus', lastName: 'Cousins', role:'player', bio:'xyz', height: '6\'11\"', weight: 270, birthDate: Date.parse("MM-dd-yyyy", "08-13-1990"), birthPlace: 'Boston, MA', universityAttended: 'BU')
+            User user6 = new User(username:'user6',password: 'secret', bio:'Awesome guy', height: '6\'11\"', weight: 270, birthDate: Date.parse("MM-dd-yyyy", "08-13-1990"), birthPlace: 'Boston, MA', universityAttended: 'BU', blogEntries: [], enabled: true )
+
+            Person demarcus = new Person(firstName: 'DeMarcus', lastName: 'Cousins', role:'player', user: user6)
             demarcus.team = sanAntoniaSpurs
             demarcus.gameStats = []
             sanAntoniaSpurs.players = [] << demarcus
@@ -91,7 +104,9 @@ class GameStatsServiceIntegrationSpec extends Specification {
             houstonRockets.conference = western
             western.teams << houstonRockets
 
-            Person derio = new Person(firstName: 'Dario', lastName: 'Saric', role:'player', bio:'xyz', height: '6\'10\"', weight: 223, birthDate: Date.parse("MM-dd-yyyy", "04-08-1994"), birthPlace: 'Boston, MA', universityAttended: 'BU')
+            User user7 = new User(username:'user7',password: 'secret', bio:'Great guy', height: '6\'10\"', weight: 223, birthDate: Date.parse("MM-dd-yyyy", "04-08-1994"), birthPlace: 'Boston, MA', universityAttended: 'BU', blogEntries: [], enabled: true )
+
+            Person derio = new Person(firstName: 'Dario', lastName: 'Saric', role:'player', user: user7)
             derio.team = houstonRockets
             derio.gameStats = []
             houstonRockets.players = [] << derio
@@ -100,7 +115,9 @@ class GameStatsServiceIntegrationSpec extends Specification {
             utahJazz.conference = western
             western.teams << utahJazz
 
-            Person ricky = new Person(firstName: 'Ricky', lastName: 'Rubio', role:'player', bio:'xyz', height: '6\'4\"', weight: 190, birthDate: Date.parse("MM-dd-yyyy", "10-21-1990"), birthPlace: 'Boston, MA', universityAttended: 'BU')
+            User user8 = new User(username:'user8',password: 'secret', bio:'xyz', height: '6\'4\"', weight: 190, birthDate: Date.parse("MM-dd-yyyy", "10-21-1990"), birthPlace: 'Boston, MA', universityAttended: 'BU', blogEntries: [], enabled: true )
+
+            Person ricky = new Person(firstName: 'Ricky', lastName: 'Rubio', role:'player', user: user8)
             ricky.team = utahJazz
             ricky.gameStats = []
             utahJazz.players = [] << ricky
